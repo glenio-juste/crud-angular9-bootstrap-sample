@@ -1,0 +1,24 @@
+{
+  "funcionarios": [
+    {
+      "id": 1,
+      "nome": "Glenio",
+      "departamento": "Fábrica"
+    },
+    {
+      "id": 2,
+      "nome": "Antonio",
+      "departamento": "Financeiro"
+    },
+    {
+      "id": 3,
+      "nome": "Luna",
+      "departamento": "Segurança"
+    },
+    {
+      "nome": "Fabii",
+      "departamento": "Financeiro",
+      "id": 4
+    }
+  ]
+}

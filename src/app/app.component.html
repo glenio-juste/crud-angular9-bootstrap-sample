@@ -1,0 +1,57 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Nexus Gerenciamento de Funcionários</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="card list-func">
+    <h5 class="card-header">Lista de Funcionarios</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let funcionario of funcionarios">
+              <td>{{funcionario.id}}</td>
+              <td>{{funcionario.nome}}</td>
+              <td>{{funcionario.departamento}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editFuncionario(funcionario)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteFuncionario(funcionario)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <div class="card add-func">
+      <h5 class="card-header">Adicionar/Atualizar Funcionário</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && saveFuncionario(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" [(ngModel)]="funcionario.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o nome">
+                <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                    <div *ngIf="nome.errors.required">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="departamento">Departamento</label>
+                <input type="text" [(ngModel)]="funcionario.departamento" id="departamento" name="departamento" #departamento="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && departamento.invalid }" placeholder="Digite o departamento">
+                <div *ngIf="f.submitted && departamento.invalid" class="invalid-feedback">
+                    <div *ngIf="departamento.errors.required">Departamento é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-func">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-func" (click)="cleanForm(f)">Cancelar</button>
+          </form>
+      </div>
+    </div>
+</div>
